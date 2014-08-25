@@ -4,9 +4,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Маджонг</title>
+		<link type="text/css" rel="stylesheet" media="screen" href="css/reset.css" />
 		<style type="text/css">
-			.board {}
-			.tile {}
 		</style>
 	</head>
 	<body>
@@ -14,5 +13,6 @@
 		<script language="JavaScript" type="text/javascript" src="js/func.js"></script>
 		<script language="JavaScript" type="text/javascript" src="js/index.js"></script>
 		<script language="JavaScript" type="text/javascript" src="js/Board.js"></script>
+		<script language="JavaScript" type="text/javascript" src="js/Tile.js"></script>
 	</body>
 </html>
