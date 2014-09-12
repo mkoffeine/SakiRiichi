@@ -1,5 +1,5 @@
 <header>
-	<h1><?php echo Request::current()->uri() != "/" ? HTML::anchor('', __('KOHANA 3.2 EXAMPLE')) : __('KOHANA 3.2 EXAMPLE'); ?></h1>
+	<h1><?php echo Request::current()->uri() != "/" ? HTML::anchor('', __('KOHANA 3.3 EXAMPLE')) : __('KOHANA 3.3 EXAMPLE'); ?></h1>
 	
 	<ul id="menu">
 		<li><?php echo Request::current()->uri() != "about" ? HTML::anchor('about', __('ABOUT')) : __('ABOUT'); ?></li>

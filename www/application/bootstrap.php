@@ -56,15 +56,15 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  * Note: If you supply an invalid environment name, a PHP warning will be thrown
  * saying "Couldn't find constant Kohana::<INVALID_ENV_NAME>"
  */
-if (isset($_SERVER['KOHANA_ENV']))
-{
-	Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
-}
-else
-{
-	Kohana::$environment = ($_SERVER['REMOTE_ADDR'] == '127.0.0.1' ? Kohana::DEVELOPMENT : Kohana::PRODUCTION);
-}
-//Kohana::$environment = Kohana::PRODUCTION;
+//if (isset($_SERVER['KOHANA_ENV']))
+//{
+//	Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
+//}
+//else
+//{
+//	Kohana::$environment = ($_SERVER['REMOTE_ADDR'] == '127.0.0.1' ? Kohana::DEVELOPMENT : Kohana::PRODUCTION);
+//}
+Kohana::$environment = Kohana::PRODUCTION;
 
 /**
  * Initialize Kohana, setting the default options.
@@ -83,10 +83,12 @@ Kohana::init(array(
 	//'base_url'   => '/SakiRiichi/kohana/site',
 	//'base_url'   => '/SakiRiichi/kohana',
 	'index_file' => FALSE,
+	'profile'	 => FALSE,
 	//'profile' => (Kohana::$environment !== Kohana::PRODUCTION),
 	//'caching' => (Kohana::$environment === Kohana::PRODUCTION),
 	//'errors'  => FALSE,
 ));
+//Kohana::$profiling = FALSE;
 
 
 

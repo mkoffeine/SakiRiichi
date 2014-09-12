@@ -5,10 +5,10 @@
 <meta name="description" content="A short phrase that describes the content of the page" />
 <meta name="keywords" content="list of words, separated by, comma" />
 <meta name="abstract" content="Short description of page" />
-<link rel="shortcut icon" type="image/x-icon" href="<?php echo URL::base(); ?>favicon.ico">
-<link rel="apple-touch-icon" href="<?php echo URL::base(); ?>touch-icon-iphone.png" />
-<link rel="apple-touch-icon" sizes="72x72" href="<?php echo URL::base(); ?>touch-icon-ipad.png" />
-<link rel="apple-touch-icon" sizes="114x114" href="<?php echo URL::base(); ?>touch-icon-iphone4.png" />
+<link rel="shortcut icon" type="image/x-icon" href="<?php echo URL::base(); ?>assets/images/favicon.ico">
+<link rel="apple-touch-icon" href="<?php echo URL::base(); ?>assets/images/touch-icon-iphone.png" />
+<link rel="apple-touch-icon" sizes="72x72" href="<?php echo URL::base(); ?>assets/images/touch-icon-ipad.png" />
+<link rel="apple-touch-icon" sizes="114x114" href="<?php echo URL::base(); ?>assets/images/touch-icon-iphone4.png" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <title><?php echo $title ?></title>
