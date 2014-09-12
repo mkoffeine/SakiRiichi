@@ -8,6 +8,8 @@ class Controller_Home extends Controller_Template_Generic {
 	
 		$this->template->title = 'Kohana 3.3 Example';
   		$this->template->content = View::factory('home');
+		
+		$this->template->scripts[] = 'assets/js/index.js';
 	}
 	
 	public function action_language()

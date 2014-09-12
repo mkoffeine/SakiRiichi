@@ -32,7 +32,13 @@ class Controller_Template_Generic extends Controller_Template
 			$this->template->content = '';
 			
 			$this->template->styles = array();
-			$this->template->scripts = array(); 
+			$this->template->scripts = array(
+						'assets/js/jquery.alphanumeric.min.js',
+						'assets/js/jquery.password.sm.min.js',
+						'assets/js/jquery.js',
+						'assets/js/func.js',
+						'assets/js/Board.js',
+					); 
 		}
 	}
 	 
@@ -50,13 +56,12 @@ class Controller_Template_Generic extends Controller_Template
 				'assets/css/html5reset-1.6.1.css' => 'screen',
 				'assets/css/generic.css' => 'screen',
 				'http://fonts.googleapis.com/css?family=Andika' => 'screen',
+				//'assets/css/reset.css' => 'screen',
 			);
 
 			$scripts = array(
-				'http://code.jquery.com/jquery.min.js',
+				//'http://code.jquery.com/jquery.min.js',
 				//'http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js',
-				'assets/js/jquery.alphanumeric.min.js',
-				'assets/js/jquery.password.sm.min.js',
 			);
 	
 			$this->template->styles = array_merge( $this->template->styles, $styles );
