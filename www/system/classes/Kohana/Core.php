@@ -508,6 +508,7 @@ class Kohana_Core {
 		if ($path = Kohana::find_file($directory, $file))
 		{
 			// Load the class file
+			//var_dump('autoload '.$path);
 			require $path;
 
 			// Class has been found
@@ -536,6 +537,7 @@ class Kohana_Core {
 		if ($path = Kohana::find_file($directory, $file))
 		{
 			// Load the class file
+			//var_dump('autoload lowercase '.$path);
 			require $path;
 
 			// Class has been found
@@ -599,6 +601,7 @@ class Kohana_Core {
 			if (is_file($init))
 			{
 				// Include the module initialization file once
+				//var_dump('modules '.$init);
 				require_once $init;
 			}
 		}
@@ -648,6 +651,7 @@ class Kohana_Core {
 	 */
 	public static function find_file($dir, $file, $ext = NULL, $array = FALSE)
 	{
+		//var_dump('find_file '.$dir.' '.$file.' '.$ext);
 		if ($ext === NULL)
 		{
 			// Use the default extension
@@ -729,6 +733,7 @@ class Kohana_Core {
 			Profiler::stop($benchmark);
 		}
 
+		//var_dump($found);
 		return $found;
 	}
 
@@ -826,6 +831,7 @@ class Kohana_Core {
 	 */
 	public static function load($file)
 	{
+		//var_dump('load '.$file);
 		return include $file;
 	}
 
