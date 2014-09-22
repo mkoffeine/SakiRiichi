@@ -1,1 +1,0 @@
-Only for JavaScript part, for start.

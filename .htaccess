@@ -4,7 +4,7 @@
 RewriteEngine On
 
 # Installation directory
-RewriteBase /SakiRiichi.org.ua/www/
+RewriteBase /
 
 # Protect hidden files from being viewed
 <Files .*>

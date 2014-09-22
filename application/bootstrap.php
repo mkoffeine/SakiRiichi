@@ -81,9 +81,9 @@ Kohana::$environment = Kohana::PRODUCTION;
  */
 Kohana::init(array(
 	//'base_url'   => '/SakiRiichi/kohana/site',
-	'base_url'   => '/sakiriichi.org.ua/www',
+	//'base_url'   => '/sakiriichi.org.ua/www',
 	'index_file' => FALSE,
-	//'profile'	 => FALSE,
+	'profile'	 => FALSE,
 	//'profile' => (Kohana::$environment !== Kohana::PRODUCTION),
 	//'caching' => (Kohana::$environment === Kohana::PRODUCTION),
 	//'errors'  => FALSE,
