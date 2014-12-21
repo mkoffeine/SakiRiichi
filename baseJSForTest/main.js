@@ -23,8 +23,6 @@ jQuery(document).ready(function () {
         ts.isVertical = true;
         var tsView = new App.views.TilesView({collection: ts});
         $('body').append(tsView.el);
-
-
     }
 );
 
