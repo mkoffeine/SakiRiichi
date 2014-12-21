@@ -1,4 +1,4 @@
-//window.onload = function () {
+
 jQuery(document).ready(function () {
 
         window.main = {};
