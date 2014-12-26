@@ -6,8 +6,8 @@
     };
 
 
-    var h = 100;
-    var w = 60;
+    var h = 100/2;
+    var w = 60/2;
     App.models.Tile = Backbone.Model.extend({
         initialize: function () {
 
@@ -32,32 +32,50 @@
         tagName: "img",
         //<img id="imageTopId_6" src="images/tile.jpg" class="tileTop tile"/>
 //    template: _.template("<img src=\"images/<%=name%>.jpg\"/>"),
-        template0: _.template("images/<%=name%>.jpg"),
-        template90: _.template("images/<%=name%>_90.jpg"),
+        template0: _.template("images/<%=name%>.gif"),
+        template90: _.template("images/<%=name%>_90.gif"),
         render: function () {
             var angle = this.model.get('angle');
-            //todo: it needs some enhancements and bug fixing
-            //it uses rotated image
-            /*this.$el.attr("src", this.template0(this.model.toJSON()));
-             this.$el.height(h);
-             this.$el.width(w);
-             this.$el.rotate(angle);
-             if (angle == 90) {
-             //            this.$el.css('margin-top', -10);
-             this.$el.css('padding-right', h-w);
-             }
-             else if (angle == 270) {
-             this.$el.css('padding-left', h-w);
-             //            this.$el.css('margin-right', 1);
-             }
-             if (angle == 90 || angle == 270) {
-             //            this.$el.css('padding-top', (h-w)/2);
-             }*/
-            //it uses rotating
+            /* //todo: it needs some enhancements and bug fixing
+            //it uses only rotating images
+            this.$el.attr("src", this.template0(this.model.toJSON()));
+            this.$el.height(h);
+            this.$el.width(w);
+            this.$el.rotate(angle);
+            if (this.model.get('isVertical')) {
+                //todo problem with vertical, negative padding doesn't work
+                //if (angle == 90) {
+                //    this.$el.css('padding-left', w-h);
+                //}
+                //else if (angle == 270) {
+                //    this.$el.css('padding-bottom',  w -h);
+                //}
+                this.$el.height(w);
+            }
+            else
+            {
+                if (angle == 90) {
+                    //            this.$el.css('margin-top', -10);
+                    this.$el.css('padding-right', h - w);
+                    //this.$el.css('padding-right', w-h);
+                }
+                else if (angle == 270) {
+                    this.$el.css('padding-left', h - w);
+                    //this.$el.css('padding-left',  w -h);
+                    //            this.$el.css('margin-right', 1);
+                }
+                if (angle == 90 || angle == 270) {
+                    //            this.$el.css('padding-top', (h-w)/2);
+                }
+            }*/
+            //it uses rotated images
+            //todo remove jqueryRotate.2.1.js
+            this.$el.removeClass();
             if (angle == 0 || angle == 180) {
                 this.$el.attr("src", this.template0(this.model.toJSON()));
                 if (angle == 180) {
-                    this.$el.rotate(180);
+                    this.$el.addClass('rotated180');
+
                 }
                 this.$el.height(h);
                 this.$el.width(w);
@@ -65,7 +83,7 @@
             if (angle == 90 || angle == 270) {
                 this.$el.attr("src", this.template90(this.model.toJSON()));
                 if (angle == 270) {
-                    this.$el.rotate(180);
+                    this.$el.addClass('rotated180');
                 }
                 this.$el.height(w);
                 this.$el.width(h);
