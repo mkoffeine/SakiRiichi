@@ -14,16 +14,22 @@ jQuery(document).ready(function () {
         var tilesView = new App.views.TilesView({collection: tiles});
         $('body').append(tilesView.el);
 
-        var t = new App.models.Tile({name: "3d", angle: 0});
-        main.t = t;
-        var t1 = new App.models.Tile({name: "7b", angle: 270});
-        var t2 = new App.models.Tile({name: "2b", angle: 180});
-        var t3 = new App.models.Tile({name: "1b", angle: 90});
-        var t4 = new App.models.Tile({name: "5b", angle: 90});
-        var ts = new App.collections.Tiles([t, t1, t2, t3, t4]);
-        ts.isVertical = true;
-        var tsView = new App.views.TilesView({collection: ts});
-        $('body').append(tsView.el);
+            t = new TileJsonUtilities();
+            //var inJson = {values:[{n:'i1'},{n:'o1'},{n:'i3'},{n:'i3'},{n:'i3'},{n:'i4'},{n:'i5', isChi: true}]};
+            var inJson = {
+                    noOfGamer:0,
+                    values:
+                        [{n:'1b'},{n:'1c'},{n:'1c'},{n:'5d'},
+                               // {n:'1b'},{n:'1b'},{n:'3b'},{n:'3b'},{n:'3b'},{n:'4b'},{n:'5b', isChi: true},
+                                {n:'5c'},{n:'5c', isChi: true, isRed: true},{n:'5c', isChi: true},{n:'5c'}]};
+
+            $('body').append(t.getTileViewCollectionFromJson(inJson).el);
+            inJson.noOfGamer = 2;
+            $('body').append(t.getTileViewCollectionFromJson(inJson).el);
+            inJson.noOfGamer = 1;
+            $('body').append(t.getTileViewCollectionFromJson(inJson).el);
+            inJson.noOfGamer = 3;
+            $('body').append(t.getTileViewCollectionFromJson(inJson).el);
     }
 );
 

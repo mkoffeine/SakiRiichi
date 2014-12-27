@@ -6,8 +6,8 @@
     };
 
 
-    var h = 100/2;
-    var w = 60/2;
+    var h = 60;
+    var w = 42;
     App.models.Tile = Backbone.Model.extend({
         initialize: function () {
 
