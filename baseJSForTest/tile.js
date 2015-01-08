@@ -95,34 +95,41 @@
         }
     });
 
-    App.collections.Tiles = Backbone.Collection.extend({
-        initialize: function () {
+    App.models.TilesGroup = Backbone.Model.extend({
+        defaults: function () {
+            this.tilesGroup = null;
             this.isVertical = false;
-        },
-        model: App.views.TileView
 
+        }
     });
-    App.views.TilesView = Backbone.View.extend({
-
+    App.views.TilesGroupView = Backbone.View.extend({
         initialize: function () {
             this.render();
         },
-        tagName: "div",
         render: function () {
-
-            console.log("isVertical--: " + this.collection.isVertical);
-            this.collection.each(function (tile) {
-
-                var tileView = new App.views.TileView({model: tile});
-                //console.log('tile' + tile);
-                console.log("isVertical: " + this.collection.isVertical);
-                if (this.collection.isVertical) {
-                    tile.set('isVertical', true);
+            var tilesGroup = this.model.get('tilesGroup');
+            for (var i = 0; i < tilesGroup.length; i++) {
+                var div = $("<div>");
+                var isVertical = this.model.get("isVertical");
+                if (!isVertical) {
+                    div.css({display: 'inline-block', marginLeft: '2px', marginRight: '2px'});
                 }
-                this.$el.append(tileView.render().el);
-
-            }, this);
-            return this;
+                else {
+                    div.css({marginTop: '2px', marginBottom: '2px'});
+                }
+                for (var j = 0; j < tilesGroup[i].length; j++) {
+                    var tile = tilesGroup[i][j];
+                    var tileView = new App.views.TileView({model: tile});
+                    if (isVertical) {
+                        tile.set('isVertical', true);
+                    }
+                    div.append(tileView.render().el);
+                }
+                div.css({border: '1px black solid', background: '#efe'});
+                this.$el.append(div);
+            }
+            this.$el.css({border: '1px yellow solid', background: '#cfc'});
+            this.$el.css({display: 'inline-block'});
         }
-    })
+    });
 }());
