@@ -4,10 +4,22 @@
         views: {},
         collections: {}
     };
+    $(window).resize(function () {
+        initSizes();
+    });
 
 
-    var h = 60;
-    var w = 42;
+    var h;
+    var w;
+    initSizes();
+    var coefHeightToWidth = 60 / 42;
+    var discardCoef = 0.75;
+    var mainPlayerCoef = 1.2;
+
+    function initSizes() {
+        w = Math.min(window.innerHeight / 20, window.innerWidth / 22);
+        h = w * coefHeightToWidth;
+    }
     App.models.Tile = Backbone.Model.extend({
         initialize: function () {
 
@@ -27,6 +39,15 @@
     App.views.TileView = Backbone.View.extend({
         initialize: function () {
             this.model.on('change', this.render, this);
+            $(window).on("resize.app", _.bind(this.resizeEvent, this));
+        },
+
+        resizeEvent: function () {
+            this.render();
+        },
+        remove: function () {
+            $(window).off("resize.app");
+            Backbone.View.prototype.remove.call(this);
         },
 
         tagName: "img",
@@ -70,6 +91,13 @@
             }*/
             //it uses rotated images
             //todo remove jqueryRotate.2.1.js
+            var isPlayer = this.model.get('isPlayer') === true;
+            var height = isPlayer ? h : h * discardCoef;
+            var width = isPlayer ? w : w * discardCoef;
+            if (this.model.get('isMainPlayer')) {
+                height *= mainPlayerCoef;
+                width *= mainPlayerCoef;
+            }
             this.$el.removeClass();
             if (angle == 0 || angle == 180) {
                 this.$el.attr("src", this.template0(this.model.toJSON()));
@@ -77,16 +105,17 @@
                     this.$el.addClass('rotated180');
 
                 }
-                this.$el.height(h);
-                this.$el.width(w);
+
+                this.$el.height(height);
+                this.$el.width(width);
             }
             if (angle == 90 || angle == 270) {
                 this.$el.attr("src", this.template90(this.model.toJSON()));
                 if (angle == 270) {
                     this.$el.addClass('rotated180');
                 }
-                this.$el.height(w);
-                this.$el.width(h);
+                this.$el.height(width);
+                this.$el.width(height);
             }
             if (this.model.get('isVertical')) {
                 this.$el.css({display: 'block'});
@@ -99,6 +128,7 @@
         defaults: function () {
             this.tilesGroup = null;
             this.isVertical = false;
+            this.isPlayer = false;
 
         }
     });
@@ -111,11 +141,20 @@
             for (var i = 0; i < tilesGroup.length; i++) {
                 var div = $("<div>");
                 var isVertical = this.model.get("isVertical");
-                if (!isVertical) {
-                    div.css({display: 'inline-block', marginLeft: '2px', marginRight: '2px'});
-                }
-                else {
-                    div.css({marginTop: '2px', marginBottom: '2px'});
+                if (this.model.get("isPlayer")) {
+                    if (!isVertical) {
+                        div.css({display: 'inline-block', marginLeft: '2px', marginRight: '2px'});
+                    }
+                    else {
+                        div.css({marginTop: '2px', marginBottom: '2px'});
+                    }
+                } else {
+                    if (!isVertical) {
+                        div.css({marginLeft: '2px', marginRight: '2px'});
+                    }
+                    else {
+                        div.css({display: 'inline-block', marginTop: '2px', marginBottom: '2px'});
+                    }
                 }
                 for (var j = 0; j < tilesGroup[i].length; j++) {
                     var tile = tilesGroup[i][j];

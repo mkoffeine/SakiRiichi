@@ -11,7 +11,7 @@
          *
          * */
         var isVertical = no == 1 || no == 3;
-        var outJson = {values: [], 'isVertical': isVertical};
+        var outJson = {values: [], 'isVertical': isVertical, isPlayer: inJson.isPlayer};
         var i;
         for (i = 0; i < inJson.values.length; i++) {
             outJson.values[i] = [];
@@ -54,11 +54,26 @@
             var arr = json.values[i].arr;
             tileArray[i] = [];
             for (var j = 0; j < arr.length; j++) {
-                tileArray[i][j] = new App.models.Tile({name: arr[j].name, angle: arr[j].angle});
+                tileArray[i][j] = new App.models.Tile(
+                    {
+                        name: arr[j].name,
+                        angle: arr[j].angle,
+                        isPlayer: json.isPlayer,
+                        isMainPlayer: inJson.noOfGamer == 0 && json.isPlayer
+                    });
             }
         }
+        //swap array for 1, 3 number of player
+        if (json.isVertical) {
+            for (var i = 0; i < tileArray.length / 2; i++) {
+                var swap = tileArray[i];
+                tileArray[i] = tileArray[tileArray.length - i - 1];
+                tileArray[tileArray.length - i - 1] = swap;
+            }
+        }
+
         window.tile = tileArray[0][0];
-        var tileGroup = new App.models.TilesGroup({tilesGroup: tileArray});
+        var tileGroup = new App.models.TilesGroup({tilesGroup: tileArray, isPlayer: json.isPlayer});
         tileGroup.set("isVertical", json.isVertical);
         return new App.views.TilesGroupView({model: tileGroup});
     }

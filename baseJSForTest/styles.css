@@ -12,3 +12,58 @@ img {
     -o-transform: rotate(180deg);
 }
 
+/*table, th, td {
+    border: 1px solid black;
+}*/
+
+html, body {
+    height: 99%;
+    margin: 0;
+    padding: 0;
+}
+
+#divMain {
+    border: solid 3px green;
+    border-radius: 9px;
+    /*display: inline-block;*/
+}
+
+#divLeftPlayer, #divCenter, #divRightPlayer/*, #divTopPlayer,#divGameBoard*/  {
+    display: inline-block;
+}
+
+#divMainPlayer {
+    border: solid 1px red;
+    /*background-color: #ddd;*/
+
+}
+
+#divOtherPlayers {
+    /*border: solid 1px yellow;*/
+}
+
+#divLeftPlayer {
+    /*background-color: #ffd;*/
+}
+
+#divRightPlayer {
+    /*background-color: #fdf;*/
+    float: right;
+
+}
+
+#divTopPlayer {
+    background-color: #cdd;
+}
+
+#divGameBoard {
+    /*background-color: #aaa;*/
+
+}
+
+#divCenter {
+    /*left:100px;*/
+    border: solid 1px blue;
+    position: absolute;
+}
+
